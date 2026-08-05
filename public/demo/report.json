@@ -1,0 +1,30 @@
+{
+    "project": "Water Treatment Pump Station",
+    "version": "1.0",
+    "analysisDate": "2026-08-05",
+    "score": 82,
+    "issues": [
+      {
+        "id": 1,
+        "severity": "critical",
+        "title": "Maintenance clearance violation",
+        "description": "Only 180 mm clearance available. Minimum required: 600 mm.",
+        "confidence": 98
+      },
+      {
+        "id": 2,
+        "severity": "warning",
+        "title": "Valve inaccessible",
+        "description": "Valve handwheel blocked by nearby structure.",
+        "confidence": 91
+      },
+      {
+        "id": 3,
+        "severity": "warning",
+        "title": "Cable tray conflict",
+        "description": "Cable tray crosses maintenance corridor.",
+        "confidence": 87
+      }
+    ]
+  }
+  

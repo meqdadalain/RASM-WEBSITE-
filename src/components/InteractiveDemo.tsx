@@ -16,6 +16,7 @@ import {
   Gauge,
 } from 'lucide-react';
 import { SectionLabel } from './ui/MagneticButton';
+import AnalysisReport from './AnalysisReport';
 
 const PROJECT_FILES = [
   { name: 'WaterTreatment.ifc', size: '24.6 MB', active: true },
@@ -90,8 +91,17 @@ export default function InteractiveDemo() {
   const [activeIssue, setActiveIssue] = useState(0);
   const [progress, setProgress] = useState(0);
   const timers = useRef<number[]>([]);
-
-  const clearTimers = () => {
+const [report, setReport] = useState(null);
+useEffect(() => {
+  fetch('/demo/report.json')
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('RASM Report:', data);
+      setReport(data);
+    })
+    .catch((error) => console.error('Erreur lors du chargement du rapport:', error));
+}, []);
+const clearTimers = () => {
     timers.current.forEach(clearTimeout);
     timers.current = [];
   };
@@ -136,6 +146,15 @@ export default function InteractiveDemo() {
   }, [phase]);
 
   useEffect(() => () => clearTimers(), []);
+  useEffect(() => {
+    fetch('/demo/report.json')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('RASM Report :', data);
+        setReport(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <section id="demo" className="relative min-h-screen w-full py-24">
@@ -190,6 +209,7 @@ export default function InteractiveDemo() {
                 activeStep={activeStep}
                 progress={progress}
                 activeIssue={activeIssue}
+                report={report}
                 onRelaunch={launch}
               />
             </motion.div>
@@ -206,12 +226,14 @@ function PlatformShell({
   activeStep,
   progress,
   activeIssue,
+  report,
   onRelaunch,
 }: {
   phase: Phase;
   activeStep: number;
   progress: number;
   activeIssue: number;
+  report: any;
   onRelaunch: () => void;
 }) {
   return (
@@ -401,6 +423,10 @@ function PlatformShell({
             <IssuePanel activeIssue={activeIssue} />
           )}
         </div>
+{/* AI Report */}
+<div className="col-span-12">
+  <AnalysisReport report={report} />
+</div>
 
         {/* Bottom: Timeline */}
         <div className="col-span-12 rounded-2xl glass px-4 py-3">
