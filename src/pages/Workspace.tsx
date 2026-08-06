@@ -1,31 +1,25 @@
-// src/pages/Workspace.tsx
 import React from 'react';
-import AnalysisReport from '../components/AnalysisReport';
+import TopBar from '@/components/workspace/TopBar';
+import Sidebar from '@/components/workspace/Sidebar';
+import ViewerPanel from '@/components/workspace/ViewerPanel';
+import RightPanel from '@/components/workspace/RightPanel';
+import BottomPanel from '@/components/workspace/BottomPanel';
 
-export function Workspace() {
+export default function Workspace() {
   return (
-    <div className="workspace-container p-6">
-      <h1 className="text-2xl font-bold mb-4">Workspace RASM</h1>
-      
-      {/* 1. Upload IFC */}
-      <section className="upload-section mb-6 border p-4 rounded">
-        <h2 className="text-lg font-semibold">1. Upload IFC</h2>
-        <p>Zone de dépôt du fichier IFC...</p>
-      </section>
+    <div className="h-screen w-screen flex flex-col bg-ink-950 text-cyan-50 overflow-hidden font-sans">
+      {/* TopBar */}
+      <TopBar />
 
-      {/* 2. 3D Viewer */}
-      <section className="viewer-section mb-6 border p-4 rounded">
-        <h2 className="text-lg font-semibold">2. Visionneuse 3D</h2>
-        <p>Afficheur 3D IFC...</p>
-      </section>
+      {/* Central Area: Sidebar | 3D Viewer | Right Panel */}
+      <div className="flex-1 flex min-h-0 relative">
+        <Sidebar />
+        <ViewerPanel />
+        <RightPanel />
+      </div>
 
-      {/* 3. AI Analysis Report */}
-      <section className="report-section border p-4 rounded">
-        <h2 className="text-lg font-semibold mb-2">3. AI Analysis Report</h2>
-        <AnalysisReport />
-      </section>
+      {/* Bottom Panel */}
+      <BottomPanel />
     </div>
   );
 }
-
-export default Workspace;

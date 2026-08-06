@@ -26,7 +26,8 @@ export default function Nav() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.3 }}
-      className="fixed top-0 left-0 right-0 z-[90]"
+      /* Ajout de bg-black/80 et backdrop-blur-md pour masquer le texte qui dépasse par-dessous */
+      className="fixed top-0 left-0 right-0 z-[90] bg-black/80 backdrop-blur-md border-b border-white/5"
     >
       <div
         className={`mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-500 ${
@@ -55,7 +56,7 @@ export default function Nav() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-full px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-cyan-100/60 transition-colors hover:bg-cyan-400/10 hover:text-cyan-100"
+              className="rounded-full px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-cyan-100/60 transition-colors hover:bg-cyan-400/10 hover:text-cyan-100"
             >
               {item.label}
             </a>
@@ -88,7 +89,7 @@ export default function Nav() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="mx-4 mt-2 flex flex-col gap-1 rounded-2xl glass-strong p-3 lg:hidden"
+            className="mx-4 mb-3 flex flex-col gap-1 rounded-2xl glass-strong p-3 lg:hidden"
           >
             {NAV.map((item) => (
               <a
