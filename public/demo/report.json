@@ -1,30 +1,39 @@
-{
-    "project": "Water Treatment Pump Station",
-    "version": "1.0",
-    "analysisDate": "2026-08-05",
-    "score": 82,
-    "issues": [
-      {
-        "id": 1,
-        "severity": "critical",
-        "title": "Maintenance clearance violation",
-        "description": "Only 180 mm clearance available. Minimum required: 600 mm.",
-        "confidence": 98
-      },
-      {
-        "id": 2,
-        "severity": "warning",
-        "title": "Valve inaccessible",
-        "description": "Valve handwheel blocked by nearby structure.",
-        "confidence": 91
-      },
-      {
-        "id": 3,
-        "severity": "warning",
-        "title": "Cable tray conflict",
-        "description": "Cable tray crosses maintenance corridor.",
-        "confidence": 87
-      }
-    ]
-  }
-  
+﻿{
+  "summary": "Analyse automatisée de la maquette IFC réalisée par RASM AI Engine. Trois anomalies majeures ont été identifiées nécessitant une révision technique avant validation VRD/Structure.",
+  "statistics": {
+    "totalElements": 142,
+    "issuesFound": 3,
+    "clashCount": 1,
+    "complianceCount": 1,
+    "materialCount": 1
+  },
+  "confidenceScore": 0.94,
+  "detectedIssues": [
+    {
+      "id": "ISSUE-01",
+      "type": "Clash",
+      "severity": "High",
+      "title": "Collision Réseau / Poutre",
+      "description": "Poutre B-12 en collision directe avec la gaine de ventilation HVAC-04."
+    },
+    {
+      "id": "ISSUE-02",
+      "type": "Compliance",
+      "severity": "Medium",
+      "title": "Non-conformité thermique",
+      "description": "Épaisseur de dalle sous-dimensionnée par rapport aux exigences RE2020."
+    },
+    {
+      "id": "ISSUE-03",
+      "type": "Material",
+      "severity": "Low",
+      "title": "Spécification Béton",
+      "description": "Qualité du béton C30/37 recommandée pour le poteau P-04."
+    }
+  ],
+  "recommendations": [
+    "Ajuster l'altimétrie du réseau de ventilation au niveau N1.",
+    "Revoir le dimensionnement de l'isolant de la dalle basse.",
+    "Mettre à jour la fiche matériau du poteau P-04."
+  ]
+}
